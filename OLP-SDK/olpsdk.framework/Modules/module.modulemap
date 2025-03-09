@@ -1,0 +1,6 @@
+framework module olpsdk {
+  umbrella header "olpsdk.h"
+
+  export *
+  module * { export * }
+}
