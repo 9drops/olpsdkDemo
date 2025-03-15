@@ -57,6 +57,46 @@
                                     <action selector="getFileInfo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dLA-Cr-qGL"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adl-ST-4zF">
+                                <rect key="frame" x="20" y="394" width="353" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="下载文件"/>
+                                <connections>
+                                    <action selector="downloadFile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mqb-7f-Ov9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0uf-SD-3sV">
+                                <rect key="frame" x="20" y="449" width="353" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="删除文件"/>
+                                <connections>
+                                    <action selector="deleteFile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a6H-7a-JpA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2s7-uv-mFj">
+                                <rect key="frame" x="20" y="504" width="353" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="获取容量"/>
+                                <connections>
+                                    <action selector="getCapacity:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gG9-TR-LmR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9D-LY-P17">
+                                <rect key="frame" x="20" y="559" width="353" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="opus转wav、mp3"/>
+                                <connections>
+                                    <action selector="opus2mp3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9gD-uz-WxX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJv-SH-EUc">
+                                <rect key="frame" x="20" y="614" width="353" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="开始录音"/>
+                                <connections>
+                                    <action selector="startOrStopRecord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="i6F-OJ-r71"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -65,26 +105,42 @@
                             <constraint firstItem="zWn-gN-3a7" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="6pg-Cp-0lS"/>
                             <constraint firstItem="g7H-kv-2kc" firstAttribute="top" secondItem="zWn-gN-3a7" secondAttribute="bottom" constant="20" id="AOJ-3A-8hB"/>
                             <constraint firstItem="geQ-r6-Pc4" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Auj-Xg-xXO"/>
+                            <constraint firstItem="g9D-LY-P17" firstAttribute="centerX" secondItem="2s7-uv-mFj" secondAttribute="centerX" id="CVL-oA-Jp1"/>
+                            <constraint firstItem="g9D-LY-P17" firstAttribute="top" secondItem="2s7-uv-mFj" secondAttribute="bottom" constant="20" id="QhP-6I-gWW"/>
                             <constraint firstItem="3Yp-O1-uZn" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="R9A-ww-coh"/>
+                            <constraint firstItem="adl-ST-4zF" firstAttribute="centerX" secondItem="geQ-r6-Pc4" secondAttribute="centerX" id="SPf-5k-ENe"/>
+                            <constraint firstItem="2s7-uv-mFj" firstAttribute="top" secondItem="0uf-SD-3sV" secondAttribute="bottom" constant="20" id="T2j-g4-4aM"/>
                             <constraint firstItem="7xX-Vq-NpU" firstAttribute="top" secondItem="g7H-kv-2kc" secondAttribute="bottom" constant="20" id="THn-ZR-9v4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zWn-gN-3a7" secondAttribute="trailing" constant="20" id="TUt-S9-3Yz"/>
                             <constraint firstItem="g7H-kv-2kc" firstAttribute="centerX" secondItem="zWn-gN-3a7" secondAttribute="centerX" id="UF3-3W-X0I"/>
+                            <constraint firstItem="adl-ST-4zF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="VSB-Up-zNK"/>
                             <constraint firstItem="7xX-Vq-NpU" firstAttribute="centerX" secondItem="g7H-kv-2kc" secondAttribute="centerX" id="VbO-oY-mt9"/>
                             <constraint firstItem="7xX-Vq-NpU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="WrA-R8-EbU"/>
+                            <constraint firstItem="g9D-LY-P17" firstAttribute="leading" secondItem="2s7-uv-mFj" secondAttribute="leading" id="c3A-9G-zTv"/>
                             <constraint firstItem="geQ-r6-Pc4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="c7m-Dq-LL8"/>
+                            <constraint firstItem="adl-ST-4zF" firstAttribute="top" secondItem="geQ-r6-Pc4" secondAttribute="bottom" constant="20" id="d0i-Lg-yRJ"/>
+                            <constraint firstItem="lJv-SH-EUc" firstAttribute="centerX" secondItem="g9D-LY-P17" secondAttribute="centerX" id="hQe-eq-sQH"/>
+                            <constraint firstItem="0uf-SD-3sV" firstAttribute="top" secondItem="adl-ST-4zF" secondAttribute="bottom" constant="20" id="juI-kD-wAI"/>
+                            <constraint firstItem="lJv-SH-EUc" firstAttribute="top" secondItem="g9D-LY-P17" secondAttribute="bottom" constant="20" id="l8a-cO-8dH"/>
                             <constraint firstItem="zWn-gN-3a7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="mds-0d-9ki"/>
+                            <constraint firstItem="2s7-uv-mFj" firstAttribute="centerX" secondItem="0uf-SD-3sV" secondAttribute="centerX" id="n9w-bZ-Gft"/>
+                            <constraint firstItem="lJv-SH-EUc" firstAttribute="leading" secondItem="g9D-LY-P17" secondAttribute="leading" id="oW6-8a-HIf"/>
                             <constraint firstItem="3Yp-O1-uZn" firstAttribute="top" secondItem="7xX-Vq-NpU" secondAttribute="bottom" constant="20" id="pD7-Vw-kxi"/>
+                            <constraint firstItem="2s7-uv-mFj" firstAttribute="leading" secondItem="0uf-SD-3sV" secondAttribute="leading" id="q10-p3-XGf"/>
                             <constraint firstItem="geQ-r6-Pc4" firstAttribute="top" secondItem="3Yp-O1-uZn" secondAttribute="bottom" constant="20" id="qWR-c5-vbn"/>
                             <constraint firstItem="g7H-kv-2kc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="tIn-sn-q6H"/>
+                            <constraint firstItem="0uf-SD-3sV" firstAttribute="trailing" secondItem="adl-ST-4zF" secondAttribute="trailing" id="x94-YV-a5o"/>
+                            <constraint firstItem="0uf-SD-3sV" firstAttribute="centerX" secondItem="adl-ST-4zF" secondAttribute="centerX" id="xwT-qQ-a7T"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="connectButton" destination="zWn-gN-3a7" id="Hov-vc-d7R"/>
+                        <outlet property="startOrStopRecordButton" destination="lJv-SH-EUc" id="UX8-HW-vrz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138" y="5"/>
+            <point key="canvasLocation" x="136.64122137404578" y="4.9295774647887329"/>
         </scene>
     </scenes>
     <resources>

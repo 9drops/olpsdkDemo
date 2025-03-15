@@ -17,5 +17,6 @@
 @property (nonatomic, strong) NSString *targetUUID; //耳机的UUID
 
 + (instancetype)shared;
+- (void)reconnect;
 
 @end

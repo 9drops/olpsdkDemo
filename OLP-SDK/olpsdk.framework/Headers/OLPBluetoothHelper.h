@@ -11,6 +11,26 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+//错误码
+typedef NS_ENUM(NSInteger, OLPErrCode) {
+    OLPErrCodeOK = 0, //成功
+    OLPErrCodeCmdTimeout = 999, //名字执行超时
+    OLPErrCodeDisconnected, //蓝牙断开
+    OLPErrCodeCharacterNotFound, //找不到特征值
+    OLPErrCodeWaiting, //已有操作进行中
+    OLPErrCodeRecordType, //录音类型错误
+    OLPErrCodeRecordInner, //录音错误
+    OLPErrCodeGetFileId, //文件ID获取失败
+    OLPErrCodeGetFileInfo, //获取文件信息失败
+    OLPErrCodeDownloaded, //已下载文件长度大于待下载文件总长度
+    OLPErrCodeUpdateFirmwarePrepare, //固件更新-准备失败
+    OLPErrCodeUpdateFirmwareConfig, //固件更新-配置失败
+    OLPErrCodeUpdateSelectionSide, //分区选择错误
+    OLPErrCodeFirmwareNil, //固件更新失败-空数据
+    OLPErrCodeUpdateCheck, //固件更新-校验错误
+    OLPErrCodeUpdateBye, //固件更新-结束失败
+};
+
 @interface OLPBluetoothHelper : NSObject
 
 @property (nonatomic, strong) CBPeripheral *connectedPeripheral;
@@ -20,7 +40,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)shared;
 
-/// 获取剩余电量（百分比）
+/// 同步接口，获取剩余电量（百分比的数值部分）失败，返回-1 成功，返回剩余电量
+- (NSInteger)getPower;
+
+/// 获取剩余电量（百分比的数值部分）
+/// result：失败，error非nil 成功，error为nil
 - (void)getPower:(void(^)(NSError *error, NSInteger power))result;
 
 /// 获取固件版本号
@@ -28,40 +52,39 @@ NS_ASSUME_NONNULL_BEGIN
 ///   - result: 返回结果回调block
 - (void)getFirmwareVersion:(void (^)(NSError *error, NSString *version))result;
 
-/// ⚠️TODO：此接口暂不可用，待解决问题：执行开始指令后发送数据包蓝牙就断开
+// 获取固件版本号,返回nil失败，其他成功
+- (NSString *)getFirmwareVersion;
+
+/// 固件更新
 /// - Parameters:
 ///   - filePath: 固件文件路径
 ///   - progress: 固件文件上传进度
 ///   - completion: 成功：error为nil，其他失败
 - (void)updateFirmware:(NSString *)filePath progress:(OLPProgress)progress completion:(OLPCallBack)completion;
 
-
-/// 获取Flash中文件数和起始文件ID
-/// - Parameter completion: {@"Num": 文件数, @"FirstId": 起始文件ID}
-- (void)getFileNumAndFirstId:(void (^)(NSError *error, NSDictionary<NSString *, NSNumber *> *))completion;
-
-
-/// 由文件ID获取文件信息
-/// - Parameters:
-///   - fileId: 文件ID
-///   - completion: 文件信息OLPFileHeader对象
-- (void)getFileInfo:(NSInteger)fileId completion:(void (^)(NSError * _Nullable , OLPFileHeader * _Nullable))completion;
-
-
 /// 获取Flash文件信息列表
 /// - Parameter completion: 文件信息列表
 - (void)getFlashFileList:(void (^)(NSError *error, NSArray<OLPFileHeader *> *fileList))completion;
 
+/// 同步接口，获取耳机存储容量, 成功，返回[总字节数，剩余字节数]，失败，返回nil
+- (NSArray<NSNumber *> *)getCapacity;
+
 /// 获取耳机存储容量（总字节数、剩余字节数）
 /// - Parameters:
-///   - completion: 成功：error为nil，其他失败, flashCapacity:@{"Total":, @"Free"}
-- (void)getCapacity:(void (^)(NSError *error, NSDictionary<NSString *, NSNumber *> *flashCapacity))completion;
+///   - completion: 成功：error为nil，其他失败, flashCapacity:[总容量, 剩余容量]
+- (void)getCapacity:(void (^)(NSError *error, NSArray<NSNumber *> *flashCapacity))completion;
 
 /// 从蓝牙耳机下载启始文件到APP，下载成功后从耳机删除此文件
 /// - Parameters:
 ///   - outputFilePath: 下载后保存的文件路径
+///   - progress 下载进度
 ///   - completion: 成功：error为nil，其他失败
-- (void)downloadFirstFlashFile:(NSString *)outputFilePath completion:(void (^)(NSError *error))completion;
+- (void)downloadFirstFlashFile:(NSString *)outputFilePath progress:(OLPProgress)progress completion:(void (^)(NSError *error))completion;
+
+/// 从蓝牙耳机删除启始文件
+/// - Parameters:
+/// - completion: 成功：error为nil，其他失败
+- (void)deleteFirstFlashFile:(void (^)(NSError *error))completion;
 
 /// 启动录音
 /// - Parameters:

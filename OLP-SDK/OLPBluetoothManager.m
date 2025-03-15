@@ -8,8 +8,6 @@
 #import "OLPBluetoothManager.h"
 #import <olpsdk/OLPBluetoothHelper.h>
 
-static NSString * ConnectedPeripheralUUIDKey = @"ConnectedPeripheralUUID";
-
 @implementation OLPBluetoothManager {
     CBCentralManager *centralManager;
     CBPeripheral *connectedPeripheral;
@@ -33,15 +31,20 @@ static NSString * ConnectedPeripheralUUIDKey = @"ConnectedPeripheralUUID";
     return self;
 }
 
+///重连蓝牙设备
+- (void)reconnect {
+    if (centralManager.state == CBManagerStatePoweredOn && connectedPeripheral.state == CBPeripheralStateDisconnected) {
+        [centralManager connectPeripheral:connectedPeripheral options:nil];
+    }
+}
+
 #pragma mark - CBCentralManagerDelegate
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central {
     if (central.state == CBManagerStatePoweredOn) {
-        NSString *savedUUID = [[NSUserDefaults standardUserDefaults] stringForKey:ConnectedPeripheralUUIDKey];
-        if (savedUUID) {
-            NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:savedUUID];
+        if (self.targetUUID) {
+            NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:self.targetUUID];
             NSArray *peripherals = [central retrievePeripheralsWithIdentifiers:@[uuid]];
-            connectedPeripheral = peripherals.firstObject; //持久化peripheral对象，避免释放
             if (peripherals.count > 0) {
                 [central connectPeripheral:peripherals.firstObject options:nil];
             }
@@ -52,9 +55,10 @@ static NSString * ConnectedPeripheralUUIDKey = @"ConnectedPeripheralUUID";
 }
 
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary<NSString *,id> *)advertisementData RSSI:(NSNumber *)RSSI {
-    if ([self.targetUUID isEqualToString:peripheral.identifier.UUIDString] || [peripheral.name hasPrefix:self.peripheralNamePrefix]) {
+    if ([self.targetUUID isEqualToString:peripheral.identifier.UUIDString] || (self.peripheralNamePrefix && [peripheral.name hasPrefix:self.peripheralNamePrefix])) {
         [central stopScan];
         [central connectPeripheral:peripheral options:nil];
+        connectedPeripheral = peripheral; //持久化peripheral对象，避免释放
     }
 }
 
@@ -66,10 +70,7 @@ static NSString * ConnectedPeripheralUUIDKey = @"ConnectedPeripheralUUID";
     
     NSString *uuidString = peripheral.identifier.UUIDString;
     self.targetUUID = uuidString;
-   [[NSUserDefaults standardUserDefaults] setObject:uuidString forKey:ConnectedPeripheralUUIDKey];
-   [[NSUserDefaults standardUserDefaults] synchronize];
 }
-
 
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
     NSLog(@"蓝牙设备断开，尝试重新连接...");
@@ -104,9 +105,19 @@ static NSString * ConnectedPeripheralUUIDKey = @"ConnectedPeripheralUUID";
     self.bluetoothHelper.didWriteValueForCharacteristicBlock(peripheral, characteristic, error); //回调写完成block
 }
 
-
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
     self.bluetoothHelper.didUpdateValueForCharacteristicBlock(peripheral, characteristic, error); //回调值更新block
+}
+
+#pragma mark - getters
+
+//耳机设备名称，如果用户没有设置，默认返回"OLEAP Archer"
+- (NSString *)peripheralNamePrefix {
+    if (!_peripheralNamePrefix) {
+        _peripheralNamePrefix = @"OLEAP Archer";
+    }
+    
+    return _peripheralNamePrefix;
 }
 
 @end

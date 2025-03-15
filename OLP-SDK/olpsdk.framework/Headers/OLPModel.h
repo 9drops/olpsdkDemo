@@ -18,14 +18,6 @@ typedef void (^OLPProgress)(NSUInteger totalSent, NSUInteger expectedSend);
 typedef void (^OLPCallBack)(NSError * _Nullable error, id _Nullable result);
 
 
-//固件更新错误类型
-typedef NS_ENUM(NSInteger, OLPUpdateFirmwareError) {
-    OLPUpdateFirmwareErrorReadFile  = -1, //读文件错误
-    OLPUpdateFirmwareErrorDataNil   = -2, //空数据
-    OLPUpdateFirmwareErrorSend      = -3, //发送错误
-    OLPUpdateFirmwareErrorDataCheck = -4, //校验失败
-};
-
 // 解码类型
 typedef NS_ENUM(NSInteger, OLPDecodeType) {
     OLPDecodeTypeMP3 = 0, //opus convert to mp3
@@ -34,12 +26,14 @@ typedef NS_ENUM(NSInteger, OLPDecodeType) {
 
 // 录音类型
 typedef NS_ENUM(NSInteger, OLPRecordType) {
-    OLPRecordTypePersonal, //降噪
+    OLPRecordTypeANC, //降噪
     OLPRecordTypeCall, //通话
-    OLPRecordTypeAudio,//媒体
+    OLPRecordTypeMedia,//媒体
     OLPRecordTypeAmbient, //环境
     OLPRecordTypeStop, //结束录音
 };
+
+#define OLP_RECORD_DESCS @{@(OLPRecordTypeANC) : @"降噪", @(OLPRecordTypeCall) : @"通话", @(OLPRecordTypeMedia) : @"媒体"}
 
 @interface OLPFileTime : NSObject
 
@@ -52,13 +46,14 @@ typedef NS_ENUM(NSInteger, OLPRecordType) {
 
 + (instancetype)fileTimeWithYear:(uint8_t)year month:(uint8_t)month day:(uint8_t)day hour:(uint8_t)hour minute:(uint8_t)minute second:(uint8_t)second;
 + (instancetype)fileTimeStruct:(void *)fileTime;
+- (NSDate *)toDate;
 
 @end
 
 @interface OLPFileHeader : NSObject
 
 @property (nonatomic, assign) BOOL exist;
-@property (nonatomic, assign) OLPFileTime *creatTime;
+@property (nonatomic, assign) NSDate *creatTime;
 @property (nonatomic, assign) OLPRecordType recordType;
 @property (nonatomic, assign) NSUInteger filesize;
 
