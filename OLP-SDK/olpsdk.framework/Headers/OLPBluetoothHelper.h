@@ -33,12 +33,21 @@ typedef NS_ENUM(NSInteger, OLPErrCode) {
 
 @interface OLPBluetoothHelper : NSObject
 
+//已连接的蓝牙设备
 @property (nonatomic, strong) CBPeripheral *connectedPeripheral;
+//发现蓝牙设备回调
+@property (nonatomic, strong) OLPDidDiscoverPeripheralBlock didDiscoverPeripheralBlock;
+//蓝牙设备连接成功或出错回调
+@property (nonatomic, strong) OLPDidConnectPeripheralBlock didConnectPeripheralBlock;
+
 @property (nonatomic, strong, readonly) OLPAddDiscoveredCharacteristicBlock addDiscoveredCharacteristicBlock;
 @property (nonatomic, strong, readonly) OLPDidWriteValueForCharacteristicBlock didWriteValueForCharacteristicBlock;
 @property (nonatomic, strong, readonly) OLPDidUpdateValueForCharacteristicBlock didUpdateValueForCharacteristicBlock;
 
 + (instancetype)shared;
+
+/// 蓝牙设备连接状态
+- (CBPeripheralState)peripheralConnectState;
 
 /// 同步接口，获取剩余电量（百分比的数值部分）失败，返回-1 成功，返回剩余电量
 - (NSInteger)getPower;

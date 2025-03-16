@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF8326492D7DE95300FE4F1D /* OLPBluetoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE7F5B82D72099000814FC6 /* OLPBluetoothManager.m */; };
 		BF8326552D7DFE0E00FE4F1D /* olpsdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF8326532D7DFDF600FE4F1D /* olpsdk.framework */; };
 		BF8326562D7DFE0E00FE4F1D /* olpsdk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF8326532D7DFDF600FE4F1D /* olpsdk.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BFE7F5832D71F9A500814FC6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE7F5822D71F9A500814FC6 /* AppDelegate.m */; };
@@ -72,8 +71,6 @@
 		BFE7F5A32D71F9A700814FC6 /* OLP-SDKUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OLP-SDKUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE7F5A72D71F9A700814FC6 /* OLP_SDKUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OLP_SDKUITests.m; sourceTree = "<group>"; };
 		BFE7F5A92D71F9A700814FC6 /* OLP_SDKUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OLP_SDKUITestsLaunchTests.m; sourceTree = "<group>"; };
-		BFE7F5B72D72099000814FC6 /* OLPBluetoothManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OLPBluetoothManager.h; sourceTree = "<group>"; };
-		BFE7F5B82D72099000814FC6 /* OLPBluetoothManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OLPBluetoothManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,8 +134,6 @@
 				BFE7F5822D71F9A500814FC6 /* AppDelegate.m */,
 				BFE7F5842D71F9A500814FC6 /* SceneDelegate.h */,
 				BFE7F5852D71F9A500814FC6 /* SceneDelegate.m */,
-				BFE7F5B72D72099000814FC6 /* OLPBluetoothManager.h */,
-				BFE7F5B82D72099000814FC6 /* OLPBluetoothManager.m */,
 				BFE7F5872D71F9A500814FC6 /* ViewController.h */,
 				BFE7F5882D71F9A500814FC6 /* ViewController.m */,
 				BF8326532D7DFDF600FE4F1D /* olpsdk.framework */,
@@ -299,7 +294,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF8326492D7DE95300FE4F1D /* OLPBluetoothManager.m in Sources */,
 				BFE7F5892D71F9A500814FC6 /* ViewController.m in Sources */,
 				BFE7F5832D71F9A500814FC6 /* AppDelegate.m in Sources */,
 				BFE7F5942D71F9A700814FC6 /* main.m in Sources */,

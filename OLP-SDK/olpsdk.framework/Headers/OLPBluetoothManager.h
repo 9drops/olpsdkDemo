@@ -12,7 +12,7 @@
 
 @interface OLPBluetoothManager : NSObject <CBCentralManagerDelegate, CBPeripheralDelegate>
 
-@property (nonatomic, strong) OLPBluetoothHelper *bluetoothHelper;
+@property (nonatomic, strong) OLPBluetoothHelper *helper;
 @property (nonatomic, strong) NSString *peripheralNamePrefix; //耳机设备名称，"OLEAP Archer"
 @property (nonatomic, strong) NSString *targetUUID; //耳机的UUID
 

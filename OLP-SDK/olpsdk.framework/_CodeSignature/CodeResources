@@ -18,11 +18,15 @@
 		</data>
 		<key>Headers/OLPBluetoothHelper.h</key>
 		<data>
-		FKJEAlggjg7JMOWzz6r6vVVeCdU=
+		p+HeugGVg3ptvJI8hSb6GC1jvWw=
+		</data>
+		<key>Headers/OLPBluetoothManager.h</key>
+		<data>
+		kz74lymFMU3z3oyDnOS2GG0aNGY=
 		</data>
 		<key>Headers/OLPModel.h</key>
 		<data>
-		ItqvSpNqfmDnwdum4bjJmTU7ySs=
+		dbur3hOo6PGg3bamosSP7XYh2eo=
 		</data>
 		<key>Headers/olpsdk.h</key>
 		<data>
@@ -30,7 +34,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		aXyU1UQjNe21X5vF/SG9YTFg0To=
+		3tXO7t1HZfXxssijM+zS7MjupXM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -76,22 +80,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			FKJEAlggjg7JMOWzz6r6vVVeCdU=
+			p+HeugGVg3ptvJI8hSb6GC1jvWw=
 			</data>
 			<key>hash2</key>
 			<data>
-			y3620UbRbMR8xrDEVXX2cVX/ntc83A10w5z2VDCiKTA=
+			7NUhwMHtPRvdMhLcxrzjQasid4VkuTtJCDjwH406fa4=
+			</data>
+		</dict>
+		<key>Headers/OLPBluetoothManager.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			kz74lymFMU3z3oyDnOS2GG0aNGY=
+			</data>
+			<key>hash2</key>
+			<data>
+			CnC0hswjtAEQOEjAcTjCqWJOuWovNMhr3fiubXDl6kc=
 			</data>
 		</dict>
 		<key>Headers/OLPModel.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ItqvSpNqfmDnwdum4bjJmTU7ySs=
+			dbur3hOo6PGg3bamosSP7XYh2eo=
 			</data>
 			<key>hash2</key>
 			<data>
-			ELv6DvgXV957WUxT0sXM5vugF7eXvgn1CYxq83Xxgtk=
+			NVWzO+oYDJNsIBaSXjKeUbR1UHWwYlzbpkxOVPd/eTw=
 			</data>
 		</dict>
 		<key>Headers/olpsdk.h</key>

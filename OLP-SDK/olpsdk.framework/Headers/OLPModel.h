@@ -10,6 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void (^OLPDidDiscoverPeripheralBlock)(CBPeripheral *peripheral);
+typedef void (^OLPDidConnectPeripheralBlock)(CBPeripheral * _Nullable peripheral, NSError * _Nullable error);
 typedef void (^OLPAddDiscoveredCharacteristicBlock)(CBCharacteristic *characteristic);
 typedef void (^OLPDidWriteValueForCharacteristicBlock)(CBPeripheral *peripheral, CBCharacteristic *characteristic, NSError *error);
 typedef void (^OLPDidUpdateValueForCharacteristicBlock)(CBPeripheral *peripheral, CBCharacteristic *characteristic, NSError *error);
