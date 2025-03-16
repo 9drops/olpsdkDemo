@@ -5,7 +5,8 @@
 //  Created by drops on 2025/3/9.
 //
 
-#import <Foundation/Foundation.h>
+#import <olpsdk/OLPBluetoothManager.h>
+#import <olpsdk/OLPBluetoothHelper.h>
 
 //! Project version number for olpsdk.
 FOUNDATION_EXPORT double olpsdkVersionNumber;

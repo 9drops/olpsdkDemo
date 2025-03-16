@@ -49,9 +49,6 @@ typedef NS_ENUM(NSInteger, OLPErrCode) {
 /// 蓝牙设备连接状态
 - (CBPeripheralState)peripheralConnectState;
 
-/// 同步接口，获取剩余电量（百分比的数值部分）失败，返回-1 成功，返回剩余电量
-- (NSInteger)getPower;
-
 /// 获取剩余电量（百分比的数值部分）
 /// result：失败，error非nil 成功，error为nil
 - (void)getPower:(void(^)(NSError *error, NSInteger power))result;
@@ -60,9 +57,6 @@ typedef NS_ENUM(NSInteger, OLPErrCode) {
 /// - Parameters:
 ///   - result: 返回结果回调block
 - (void)getFirmwareVersion:(void (^)(NSError *error, NSString *version))result;
-
-// 获取固件版本号,返回nil失败，其他成功
-- (NSString *)getFirmwareVersion;
 
 /// 固件更新
 /// - Parameters:
@@ -74,9 +68,6 @@ typedef NS_ENUM(NSInteger, OLPErrCode) {
 /// 获取Flash文件信息列表
 /// - Parameter completion: 文件信息列表
 - (void)getFlashFileList:(void (^)(NSError *error, NSArray<OLPFileHeader *> *fileList))completion;
-
-/// 同步接口，获取耳机存储容量, 成功，返回[总字节数，剩余字节数]，失败，返回nil
-- (NSArray<NSNumber *> *)getCapacity;
 
 /// 获取耳机存储容量（总字节数、剩余字节数）
 /// - Parameters:
